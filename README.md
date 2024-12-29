@@ -61,13 +61,13 @@
 ```
 ros2 launch mypkg talk_listen.launch.py
 ```
----
-### 実行例
+
+## 実行例
 
 以下はノードを実行した際の出力例です:
 
 
-### 二つの端末で実行した結果
+### - 二つの端末で実行した結果
 ```
 [INFO] [1735494387.281452488] [listener]: listen:  日付: 2024-12-30, 曜日: Monday, 星座: Capricorn(やぎ座)
 [INFO] [1735494387.772145678] [listener]: listen:  日付: 2024-12-31, 曜日: Tuesday, 星座: Capricorn(やぎ座)
@@ -78,7 +78,7 @@ ros2 launch mypkg talk_listen.launch.py
 ...
 ```
 
-### 一つの端末で実行した結果
+### - 一つの端末で実行した結果
 
 ```
 [INFO] [launch]: Default logging verbosity is set to INFO
@@ -89,15 +89,15 @@ ros2 launch mypkg talk_listen.launch.py
 [listener-2] [INFO] [1735492776.607125524] [listener]: listen:  日付: 2025-01-01, 曜日: Wednesday, 星座: Capricorn(やぎ座)
 ...
 ```
----
+
 ## ノードとトピックについて
 
-### ノードとファイルの概要
+### - ノードとファイルの概要
 - **`talker.py`**: 日付と星座データを生成し、0.5秒間隔で`zodiac_topic`トピックにパブリッシュするノード。
 - **`listener.py`**: `zodiac_topic`トピックのデータを受信し、ログに出力するノード。
 - **`launch/talk_listen.launch.py`**: `talker`と`listener`ノードを同時に起動するためのLaunchファイル。
 
-### トピックの概要
+### - トピックの概要
 
 ### トピック名: `/zodiac_topic`
 このパッケージでは、`talker`ノードと`listener`ノードが以下のトピックを通じて通信を行います：
