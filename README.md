@@ -92,7 +92,7 @@ ros2 launch mypkg talk_listen.launch.py
 ---
 ## ファイル構成
 
-- **`talker.py`**: 日付と星座データを生成し、`zodiac_topic`トピックにパブリッシュするノード。
+- **`talker.py`**: 日付と星座データを生成し、0.5秒間隔で`zodiac_topic`トピックにパブリッシュするノード。
 - **`listener.py`**: `zodiac_topic`トピックのデータを受信し、ログに出力するノード。
 - **`launch/talk_listen.launch.py`**: `talker`と`listener`ノードを同時に起動するためのLaunchファイル。
 
