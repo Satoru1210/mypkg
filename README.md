@@ -2,7 +2,8 @@
 
 # ROS2 星座確認Publisher
 [![test](https://github.com/Satoru1210/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/Satoru1210/mypkg/actions/workflows/test.yml)
-このROS 2パッケージは、現在の日付以降の星座、曜日、および日付情報を定期的にパブリッシュする`talker`ノードと、これを受信してログに出力する`listener`ノードで構成されています。
+
+このROS 2パッケージは、現在の日付以降の星座、曜日、および日付情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`talker`ノードと、これを受信してログに出力する`listener`ノードで構成されています。
 
 ## 動作環境
 
@@ -55,7 +56,7 @@
 ```
 
 
-###一つの端末で実行する方法
+### 一つの端末で実行する方法
 以下のコマンドで`talker`と`listener`ノードを同時に実行します:
 ```
 ros2 launch mypkg talk_listen.launch.py
@@ -66,7 +67,7 @@ ros2 launch mypkg talk_listen.launch.py
 以下はノードを実行した際の出力例です:
 
 
-###二つの端末で実行した結果
+### 二つの端末で実行した結果
 ```
 [INFO] [1735494387.281452488] [listener]: listen:  日付: 2024-12-30, 曜日: Monday, 星座: Capricorn(やぎ座)
 [INFO] [1735494387.772145678] [listener]: listen:  日付: 2024-12-31, 曜日: Tuesday, 星座: Capricorn(やぎ座)
@@ -77,7 +78,7 @@ ros2 launch mypkg talk_listen.launch.py
 ...
 ```
 
-###一つの端末で実行した結果
+### 一つの端末で実行した結果
 
 ```
 [INFO] [launch]: Default logging verbosity is set to INFO
