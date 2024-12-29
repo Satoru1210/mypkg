@@ -44,13 +44,13 @@
 実行方法は以下の二つがあります。
 ### - 二つの端末で実行する方法
 端末を二つ用意します
-- 端末1 talker
-  以下のコマンドを実行
+- talker
+  一つ目の端末で以下のコマンドを実行
 ```
  ros2 run mypkg talker
 ```
-- 端末2 listener
-  以下のコマンドを実行
+- listener
+  二つ目の端末で以下のコマンドを実行
 ```
  ros2 run mypkg listener
 ```
