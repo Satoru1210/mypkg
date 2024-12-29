@@ -41,8 +41,7 @@
 
 ### ノードの実行
 実行方法は以下の二つがあります。
-
-###二つの端末で実行する方法
+### 二つの端末で実行する方法
 端末を二つ用意します
 - 端末1 talker
   以下のコマンドを実行
@@ -77,6 +76,7 @@ ros2 launch mypkg talk_listen.launch.py
 [INFO] [1735494389.772985333] [listener]: listen:  日付: 2025-01-04, 曜日: Saturday, 星座: Capricorn(やぎ座)
 ...
 ```
+
 ###一つの端末で実行した結果
 
 ```
@@ -86,7 +86,8 @@ ros2 launch mypkg talk_listen.launch.py
 [listener-2] [INFO] [1735492775.613125159] [listener]: listen:  日付: 2024-12-30, 曜日: Monday, 星座: Capricorn(やぎ座)
 [listener-2] [INFO] [1735492776.107207855] [listener]: listen:  日付: 2024-12-31, 曜日: Tuesday, 星座: Capricorn(やぎ座)
 [listener-2] [INFO] [1735492776.607125524] [listener]: listen:  日付: 2025-01-01, 曜日: Wednesday, 星座: Capricorn(やぎ座)
-...                                                                      ```
+...
+```
 ---
 ## ファイル構成
 
