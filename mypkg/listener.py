@@ -13,7 +13,7 @@ def main():
     def cb(msg):
         node.get_logger().info(f"listen: {msg.data}")
 
-    node.create_subscription(String, "zodiac_topic", cb, 10)
+    node.create_subscription(String, "zodiac", cb, 10)
 
     rclpy.spin(node)
 

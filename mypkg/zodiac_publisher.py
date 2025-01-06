@@ -8,8 +8,8 @@ from std_msgs.msg import String
 from datetime import datetime, timedelta
 
 rclpy.init()
-node = Node("talker")
-pub = node.create_publisher(String, "zodiac_topic", 10)
+node = Node("zodiac_publisher")
+pub = node.create_publisher(String, "zodiac", 10)
 
 current_date = datetime.now()
 
@@ -52,3 +52,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
