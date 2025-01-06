@@ -10,10 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Clone or Update zodiac_msgs
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           if [ ! -d "/root/ros2_ws/src/zodiac_msgs" ]; then
-            git clone https://github.com/Satoru1210/zodiac_msgs.git /root/ros2_ws/src/zodiac_msgs
-            else
+            git clone https://$GH_TOKEN@github.com/Satoru1210/zodiac_msgs.git /root/ros2_ws/src/zodiac_msgs
+          else
             cd /root/ros2_ws/src/zodiac_msgs
             git pull origin main
           fi
