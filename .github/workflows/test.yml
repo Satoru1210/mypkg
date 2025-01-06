@@ -8,10 +8,8 @@ jobs:
     runs-on: ubuntu-22.04
     container: ryuichiueda/ubuntu22.04-ros2:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      
-      - name: Clone zodiac_msgs
+      - uses: actions/checkout@v2
+      - name: Clone or Update zodiac_msgs
         run: |
           if [ ! -d "/root/ros2_ws/src/zodiac_msgs" ]; then
             git clone https://github.com/Satoru1210/zodiac_msgs.git /root/ros2_ws/src/zodiac_msgs
@@ -19,26 +17,11 @@ jobs:
             cd /root/ros2_ws/src/zodiac_msgs
             git pull origin main
           fi
-
-      - name: Debug: Check mypkg location
+      - name: Build and Test
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
-          ls -la /root/ros2_ws/src/
-          ls -la /root/ros2_ws/src/mypkg/
-
-      - name: Build ROS2 packages
-        run: |
           cd /root/ros2_ws
           rosdep update
           rosdep install -i --from-path src --rosdistro humble -y
-          colcon build || (cat log/latest_build/my_pkg/stdout_stderr.log && exit 1)
-
-      - name: Debug: ros2 launch output
-        run: |
-          timeout 10 ros2 launch mypkg talk_listen.launch.py || echo "Launch failed"
-
-      - name: Run tests
-        run: |
-          cat /tmp/mypkg.log || echo "Log file not found"
-          grep '日付: 2025-01-12, 曜日: Sunday, 星座: Capricorn(やぎ座)' /tmp/mypkg.log || echo "No match found"
+          bash -xv ./src/mypkg/test/test.bash /root
 
