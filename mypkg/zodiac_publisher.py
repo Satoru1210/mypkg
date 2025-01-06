@@ -4,13 +4,12 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
 from datetime import datetime, timedelta
+from zodiac_msgs.msg import ZodiacInfo  
 
 rclpy.init()
 node = Node("zodiac_publisher")
-pub = node.create_publisher(String, "zodiac", 10)
-
+pub = node.create_publisher(ZodiacInfo, "zodiac", 10)  
 current_date = datetime.now()
 
 def check_zodiac(date):
@@ -36,18 +35,17 @@ def check_zodiac(date):
 
 def cb():
     global current_date
-    date = current_date.strftime('%Y-%m-%d')
-    weekday = current_date.strftime('%A')
-    zodiac = check_zodiac(current_date)
+    msg = ZodiacInfo()  
+    msg.date = current_date.strftime('%Y-%m-%d')
+    msg.weekday = current_date.strftime('%A')
+    msg.zodiac = check_zodiac(current_date)
 
-    msg = String()
-    msg.data = f" 日付: {date}, 曜日: {weekday}, 星座: {zodiac}"
+
     pub.publish(msg)
-
     current_date += timedelta(days=1)
 
 def main():
-    node.create_timer(0.5, cb)  
+    node.create_timer(0.5, cb)
     rclpy.spin(node)
 
 if __name__ == "__main__":
