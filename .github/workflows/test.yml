@@ -9,6 +9,14 @@ jobs:
     container: ryuichiueda/ubuntu22.04-ros2:latest
     steps:
       - uses: actions/checkout@v2
+      - name: Clone or Update zodiac_msgs
+        run: |
+          if [ ! -d "/root/ros2_ws/src/zodiac_msgs" ]; then
+            git clone https://github.com/Satoru1210/zodiac_msgs.git /root/ros2_ws/src/zodiac_msgs
+            else
+            cd /root/ros2_ws/src/zodiac_msgs
+            git pull origin main
+          fi
       - name: Build and Test
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
@@ -16,3 +24,4 @@ jobs:
           rosdep update
           rosdep install -i --from-path src --rosdistro humble -y
           bash -xv ./src/mypkg/test/test.bash /root
+
