@@ -4,16 +4,15 @@
 
 import rclpy
 from rclpy.node import Node
-from zodiac_msgs.msg import ZodiacInfo
+from std_msgs.msg import String  
 
 def main():
     rclpy.init()
-    node = Node("listener")
+    node = Node("listener")  
 
     def cb(msg):
-        node.get_logger().info(f"日付: {msg.date}, 曜日: {msg.weekday}, 星座: {msg.zodiac}")
-
-    node.create_subscription(ZodiacInfo, "zodiac", cb, 10)
+        node.get_logger().info(f"{msg.data}")  
+    node.create_subscription(String, "zodiac", cb, 10)  
 
     rclpy.spin(node)
 

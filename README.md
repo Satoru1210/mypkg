@@ -28,15 +28,13 @@
 実行方法は以下の二つがあります。
 ### パブリッシュ方法①
 端末を二つ用意します
-- zodiac_publisher
-  一つ目の端末で以下のコマンドを実行
+-一つ目の端末で以下のコマンドを実行
 ```
  ros2 run mypkg zodiac_publisher
 ```
-- listener
-  二つ目の端末で以下のコマンドを実行
+-二つ目の端末で以下のコマンドを実行
 ```
- ros2 run mypkg listener
+ ros2 topic echo /zodiac
 ```
 
 
@@ -53,12 +51,18 @@ ros2 launch mypkg talk_listen.launch.py
 
 ### 実行結果①
 ```
-[INFO] [1735494387.281452488] [listener]: listen:  日付: 2024-12-30, 曜日: Monday, 星座: Capricorn(やぎ座)
-[INFO] [1735494387.772145678] [listener]: listen:  日付: 2024-12-31, 曜日: Tuesday, 星座: Capricorn(やぎ座)
-[INFO] [1735494388.271891249] [listener]: listen:  日付: 2025-01-01, 曜日: Wednesday, 星座: Capricorn(やぎ座)
-[INFO] [1735494388.771798809] [listener]: listen:  日付: 2025-01-02, 曜日: Thursday, 星座: Capricorn(やぎ座)
-[INFO] [1735494389.271881959] [listener]: listen:  日付: 2025-01-03, 曜日: Friday, 星座: Capricorn(やぎ座)
-[INFO] [1735494389.772985333] [listener]: listen:  日付: 2025-01-04, 曜日: Saturday, 星座: Capricorn(やぎ座)
+data: ' 日付: 2025-01-14, 曜日: Tuesday, 星座: Capricorn(やぎ座)'
+---
+data: ' 日付: 2025-01-15, 曜日: Wednesday, 星座: Capricorn(やぎ座)'
+---
+data: ' 日付: 2025-01-16, 曜日: Thursday, 星座: Capricorn(やぎ座)'
+---
+data: ' 日付: 2025-01-17, 曜日: Friday, 星座: Capricorn(やぎ座)'
+---
+data: ' 日付: 2025-01-18, 曜日: Saturday, 星座: Capricorn(やぎ座)'
+---
+data: ' 日付: 2025-01-19, 曜日: Sunday, 星座: Capricorn(やぎ座)'
+---
 ...
 ```
 
@@ -77,14 +81,15 @@ ros2 launch mypkg talk_listen.launch.py
 ## ノードとトピックについて
 
 ### - ノードとファイルの概要
-- **`talker.py`**: 日付と星座データを生成し、0.5秒間隔で`zodiac_topic`トピックにパブリッシュするノード。
-- **`listener.py`**: `zodiac`トピックのデータを受信し、ログに出力するノード。
-- **`launch/talk_listen.launch.py`**: `talker`と`listener`ノードを同時に起動するためのLaunchファイル。
+- **`zodiac_publisher.py`**: 日付と星座データを生成し、0.5秒間隔で`zodiac`トピックにパブリッシュするノード。
+- **`listener.py`**:テスト用のノード。 `zodiac`トピックのデータを受信し、ログに出力するノード。
+- **`launch/talk_listen.launch.py`**: `zodiac_publisher`と`listener`ノードを同時に起動するためのLaunchファイル。
 
 ### - トピックの概要
 
-- **トピック名**: `zodiac_topic`  
-  `talker` ノードが `zodiac_topic` トピックに星座情報を含むメッセージをパブリッシュし、`listener` ノードがそれをサブスクライブします。
+- **トピック名**: `zodiac`  
+  `zodiac_publisher` ノードが `zodiac` トピックに星座情報を含むメッセージをパブリッシュします。
+確認に`listener` ノードを用いた場合`zodiac`をサブスクライブします。
 
 - **メッセージ型**: `String`  
   各メッセージには、以下の情報が含まれます：
@@ -94,7 +99,7 @@ ros2 launch mypkg talk_listen.launch.py
 
 - **例**:  
   ```
-  日付: 2024-12-30, 曜日: Monday, 星座: Capricorn(やぎ座)
+  data: ' 日付: 2025-01-18, 曜日: Saturday, 星座: Capricorn(やぎ座)'
   ```
 
 

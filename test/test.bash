@@ -11,5 +11,5 @@ source $dir/.bashrc
 timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
 cat /tmp/mypkg.log |
-grep '日付: 2025-01-12, 曜日: Sunday, 星座: Capricorn(やぎ座)'
+grep '日付: 2025-01-20, 曜日: Monday, 星座: Aquarius(みずがめ座)'
 
