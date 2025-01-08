@@ -3,7 +3,7 @@
 # ROS2 星座確認Publisher
 [![test](https://github.com/Satoru1210/mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/Satoru1210/mypkg/actions/workflows/test.yml)
 
-このROS 2パッケージは、現在の日付以降の星座、曜日、および日付情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`zodiac_publisher`ノードと、テスト用にこれを受信してログに出力する`listener`ノードで構成されています。
+このROS 2パッケージは、現在の日付以降の星座、曜日、および日付情報を表示する機能を持ちます。このパッケージはこれらの情報を定期的にパブリッシュする`zodiac_publisher`ノードで構成されています。
 
 ## 動作環境
 
@@ -26,7 +26,7 @@
 ###  ノードとファイルの概要
 - **`zodiac_publisher.py`**: 日付と星座データを生成し、0.5秒間隔で`zodiac`トピックにパブリッシュするノード。
 - **`listener.py`**:テスト用のノード。 `zodiac`トピックのデータを受信し、ログに出力するノード。
-- **`launch/talk_listen.launch.py`**:テスト用のノード。 `zodiac_publisher`と`listener`ノードを同時に起動するためのLaunchファイル。
+- **`launch/talk_listen.launch.py`**:テスト用のファイル。 `zodiac_publisher`と`listener`ノードを同時に起動するためのLaunchファイル。
 
 ###  トピックの概要
 
